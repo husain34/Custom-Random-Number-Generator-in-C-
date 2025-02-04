@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath>
+#include <ctime>
+using namespace std;
+int RandomNumberGenerator(long int& seed,int min,int max);
+
+int main() {
+    // Initialise seed as current time
+    long int seed = time(0);
+    
+    //Input number off dice rolls
+    int iteration;
+    cout<<"Enter the number of dice rolls you want: ";
+    cin>>iteration;
+    
+    //Counts the number of times a number is rolled
+    int dice[6]{0};     // Array to count occurrences of dice rolls
+    for(int i=0;i<iteration;i++){
+        dice[RandomNumberGenerator(seed,1,6) - 1] += 1;
+    }
+    
+    //Displays the count
+    for (int i = 0; i < 6; i++) {
+        std::cout << "Face " << (i + 1) << ": " << dice[i] << " times\n";
+    }
+    
+    return 0;
+}
+
+int RandomNumberGenerator(long int& seed, int min, int max) {
+    const long int a = 1103515245;  //Constant muultiplier
+    const long int c = 12345;   //Constant increment
+    const long int m = 32767;   //Constant modulus
+    
+    seed = abs(seed * a + c);   //Change seed per random number generated
+    int range = max-min+1;  //Range determination
+    return ((seed%m)%range)+min;    //Returns a random number
+}
