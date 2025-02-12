@@ -1,4 +1,4 @@
-# Custom-Random-Number-Generator-in-C++
+# Custom-Random-Number-Generator-in-C-plus-plus
 
 This project implements a custom **pseudo-random number generator (PRNG)** using a **Linear Congruential Generator (LCG)** formula. It simulates dice rolls and allows the user to specify the number of rolls.  
 
